@@ -1,0 +1,212 @@
+/* index.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* New Enhanced Color Palette */
+  --primary-color: #0A7CFF; /* Vibrant Blue */
+  --primary-color-rgb: 10, 124, 255; /* RGB for the primary color */
+  --primary-darker: #0056b3;
+  --primary-darker-rgb: 0, 86, 179;
+
+  --accent-color: #FF9900;  /* Warm Orange */
+  --accent-color-rgb: 255, 153, 0; /* RGB for accent color */
+  --accent-hover: #e68a00;
+  --accent-hover-rgb: 230, 138, 0;
+
+  --secondary-accent-color: #FFD700; /* Bright Yellow for highlights */
+  --secondary-accent-color-rgb: 255, 215, 0;
+
+  /* Hero Section Specific Theme */
+  --hero-bg-start: #2c3e50; /* Dark Slate Blue/Charcoal */
+  --hero-bg-end: #1f2b38;   /* Even Darker Slate/Charcoal */
+  --hero-text-primary: #FFFFFF;
+  --hero-text-secondary: #bdc3c7; /* Light Silver/Gray for secondary hero text */
+  --hero-accent: var(--secondary-accent-color); /* Using existing yellow for hero logo/highlights */
+  --hero-accent-rgb: var(--secondary-accent-color-rgb); /* Re-assign for consistency */
+
+
+  --text-dark: #2C3E50; /* Rich Dark Blue/Gray for primary text in other sections */
+  --text-medium: #34495E; /* Slightly lighter for secondary text */
+  --text-light: #FFFFFF;
+  --text-on-primary: #FFFFFF;
+  --text-on-accent: #000000; /* Black text on orange accent for better contrast */
+
+  --bg-light: #F4F7F9;     /* Very Light Gray for section backgrounds */
+  --bg-white: #FFFFFF;
+  --bg-dark: #222e3a; /* Slightly adjusted dark for footer for less intensity than hero */
+
+  --border-color: #E0E0E0; /* Default #E0E0E0 */
+  --border-color-light: #ebeef1; /* Lighter border for subtle divisions */
+
+  --shadow-color: rgba(0, 0, 0, 0.07); /* Softer default shadow */
+  --shadow-hover-color: rgba(0, 0, 0, 0.12); /* Softer hover shadow */
+  --shadow-strong: rgba(0,0,0, 0.15);
+
+  --font-primary: 'Poppins', sans-serif;
+
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 12px;
+
+  --transition-fast: all 0.2s ease-in-out;
+  --transition-smooth: all 0.3s ease-in-out;
+
+  --navbar-height: 70px; /* Define navbar height for body offset */
+}
+
+/* Reset and Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px; /* Base font size */
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--text-medium);
+  background-color: var(--bg-white);
+  line-height: 1.65; /* Slightly increased for better readability */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-top: var(--navbar-height); /* Offset for fixed navbar */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-dark);
+  font-weight: 700; /* Bolder headings */
+  line-height: 1.25; /* Adjusted line height for headings */
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1.5rem; } /* Responsive H1 */
+h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1.25rem; text-align: center;} /* Responsive H2 */
+h3 { font-size: clamp(1.4rem, 3vw, 1.75rem); margin-bottom: 1rem; } /* Responsive H3 */
+h4 { font-size: clamp(1.1rem, 2.5vw, 1.3rem); margin-bottom: 0.75rem; } /* Responsive H4 */
+
+p {
+  margin-bottom: 1.25rem; /* Increased default bottom margin for paragraphs */
+  font-size: 1rem; /* Base paragraph size */
+  color: var(--text-medium);
+}
+p:last-child {
+    margin-bottom: 0; /* Remove margin from last paragraph in a container */
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: var(--transition-fast);
+}
+a:hover {
+  color: var(--primary-darker);
+}
+
+img, svg { /* Added svg for consistency */
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+section {
+  padding: 5rem 2rem; /* Default section padding */
+  overflow-x: hidden; /* Prevent horizontal scroll from animations */
+}
+
+.container {
+  max-width: 1200px; /* Max width for content */
+  margin: 0 auto;
+  padding: 0 1rem; /* Horizontal padding for content within container */
+}
+
+/* General Button Styles */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2rem; /* Standardized padding */
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-medium);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-align: center;
+  border: none;
+  letter-spacing: 0.5px; /* Added letter spacing */
+  text-transform: capitalize; /* Example, or none */
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-on-primary);
+  box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.25);
+}
+.btn-primary:hover {
+  background-color: var(--primary-darker);
+  color: var(--text-on-primary); /* Ensure text color remains if background changes significantly */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(var(--primary-darker-rgb), 0.3);
+}
+
+.btn-accent {
+  background-color: var(--accent-color);
+  color: var(--text-on-accent); /* Ensure this provides good contrast */
+  box-shadow: 0 4px 12px rgba(var(--accent-color-rgb), 0.25);
+}
+.btn-accent:hover {
+  background-color: var(--accent-hover);
+  color: var(--text-on-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(var(--accent-hover-rgb), 0.3);
+}
+
+
+/* Section Intro Text Helper */
+.section-intro-text {
+  max-width: 750px;
+  margin: 0 auto 3.5rem auto; /* Increased bottom margin */
+  font-size: 1.1rem;
+  line-height: 1.75; /* Improved readability */
+  color: var(--text-medium);
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    line-height: 1.6; /* Adjust base line-height for mobile */
+  }
+  h1 { font-size: 2.4rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.5rem; }
+  p { font-size: 0.95rem; }
+  section { padding: 4rem 1rem; } /* Reduced section padding */
+  .container { padding: 0 0.75rem; }
+
+  :root {
+    --navbar-height: auto; /* Allow navbar to grow on mobile if it wraps */
+     /* If navbar height becomes dynamic on mobile, padding-top on body needs adjustment
+        or handle fixed nav differently (e.g. not fixed, or fixed with dynamic height) */
+  }
+  body {
+    padding-top: 60px; /* Or whatever your smallest mobile navbar height becomes, if fixed */
+    /* If nav is not fixed on mobile, padding-top: 0; */
+  }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.7rem; }
+    h3 { font-size: 1.3rem; }
+    p { font-size: 0.9rem; }
+    section { padding: 3rem 1rem; }
+    .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}

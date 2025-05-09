@@ -1,0 +1,557 @@
+/* App.css - Component Specific Styles (Excluding Hero, Testimonials, FAQ Sections) */
+
+/* --- About Section --- */
+#about {
+  background-color: var(--bg-light);
+  padding: 6rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+#about .container {
+  max-width: 900px;
+  text-align: center;
+}
+
+#about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+#about h2::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
+
+#about p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-medium);
+  margin-bottom: 2rem;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+#about p:last-of-type {
+  margin-bottom: 0;
+}
+
+
+/* --- Tracks Section --- */
+/* ... existing styles for #tracks, .tracks-grid, .program-card etc. are assumed to be in a separate TracksSection.css or another file if not here ... */
+/* If TracksSection styles were in App.css and not in their own file, they would remain here. */
+/* For this exercise, I am assuming they are managed elsewhere as per the comment. */
+
+
+/* --- Modal Styles (Adapted to YallaCode Theme) --- REVAMPED --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(44, 62, 80, 0.88); /* Consider var(--text-dark) with alpha if theme changes */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+  padding: 1rem;
+}
+
+.modal-content-container {
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius-large);
+  width: 90%;
+  max-width: 950px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: var(--bg-light); /* Light background for header for subtle distinction */
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: var(--text-dark);
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-align: left;
+  line-height: 1.25;
+}
+
+.modal-close-button {
+  position: relative;
+  background: transparent;
+  border: none;
+  font-size: 2.3rem;
+  font-weight: 300;
+  cursor: pointer;
+  color: var(--text-medium);
+  opacity: 0.6;
+  padding: 0.2rem 0.4rem;
+  line-height: 1;
+  transition: opacity 0.2s, color 0.2s, transform 0.2s ease-out;
+  margin-left: 1rem;
+}
+
+.modal-close-button:hover {
+  opacity: 1;
+  color: var(--accent-color);
+  transform: rotate(90deg) scale(1.1);
+}
+
+.modal-body {
+  padding: 1.5rem 2rem 2rem;
+  overflow-y: auto;
+  flex-grow: 1;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-body .modal-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-medium);
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+}
+.modal-body .modal-subtitle strong {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.modal-body .modal-overview {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-medium);
+  margin-bottom: 2rem;
+}
+
+.modal-body .modal-section-title {
+    margin-top: 2rem;
+    margin-bottom: 1.25rem;
+    color: var(--primary-darker);
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.6rem;
+    display: inline-block;
+}
+
+.modules-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .modules-container {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+  }
+}
+
+.module-card-modal {
+  background-color: var(--bg-light);
+  border: 1px solid #e9eef2; /* Consider var(--border-color-light) */
+  border-left: 5px solid var(--primary-color);
+  border-radius: var(--border-radius-medium);
+  padding: 1.25rem 1.5rem;
+  transition: box-shadow 0.3s ease, border-left-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.module-card-modal:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-left-color: var(--accent-color);
+}
+
+.module-card-modal h4 {
+  font-size: 1.15rem;
+  color: var(--primary-darker);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.module-card-modal h5 {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-top: 1rem;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.module-card-modal p, .module-card-modal ul li {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--text-medium);
+}
+
+.module-card-modal ul {
+    padding-left: 18px;
+    list-style-type: disc;
+    margin-bottom: 0.75rem;
+}
+.module-card-modal ul li {
+    margin-bottom: 0.4rem;
+}
+
+
+.module-card-modal p {
+    margin-bottom: 0.6rem;
+}
+.module-card-modal p:last-of-type {
+    margin-bottom: 0;
+}
+
+
+@media (max-width: 767px) {
+  .modal-content-container {
+    width: 95%;
+    max-height: 85vh;
+  }
+  .modal-header {
+    padding: 1rem 1.25rem;
+  }
+  .modal-header h2 {
+    font-size: 1.4rem;
+  }
+  .modal-close-button {
+    font-size: 2rem;
+  }
+  .modal-body {
+    padding: 1rem 1.25rem 1.5rem;
+  }
+  .modules-container {
+      grid-template-columns: 1fr; 
+  }
+  .module-card-modal h4 {
+      font-size: 1.05rem;
+  }
+}
+
+/* --- Why Section --- */
+#why {
+  background-color: var(--bg-light);
+  text-align: center;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+}
+
+@media (min-width: 640px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.why-item {
+  background-color: var(--bg-white);
+  padding: 2.5rem 2rem;
+  border-radius: var(--border-radius-large);
+  box-shadow: 0 6px 20px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+.why-item:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 12px 28px var(--shadow-hover-color);
+}
+
+.why-item .why-icon {
+  font-size: 2.8rem;
+  color: var(--accent-color);
+  margin-bottom: 1.25rem;
+  background-color: rgba(var(--accent-color-rgb, 255,153,0), 0.1);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 8px rgba(var(--accent-color-rgb, 255,153,0), 0.05);
+}
+
+.why-item h3 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.85rem;
+}
+
+.why-item p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-medium);
+  max-width: 300px; /* Or adjust as needed */
+}
+
+/* --- Contact/Apply Section --- */
+#contact {
+  background: var(--bg-white);
+}
+
+#contact form {
+  max-width: 650px;
+  margin: 3rem auto 0;
+  text-align: left;
+  background-color: var(--bg-light);
+  padding: 3rem;
+  border-radius: var(--border-radius-large);
+  box-shadow: 0 5px 25px var(--shadow-color);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  font-family: var(--font-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-medium);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--bg-white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb, 10,124,255), 0.2);
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+#contact button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+
+/* --- Footer --- */
+footer {
+  background: var(--bg-dark);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 5rem 2rem 3rem;
+  font-size: 0.95rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem 2rem;
+  align-items: start;
+}
+
+.footer-brand h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--hero-accent);
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+}
+.footer-brand p:last-of-type {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+
+.footer-links h4,
+.footer-social h4,
+.footer-newsletter h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.footer-links h4::after,
+.footer-social h4::after,
+.footer-newsletter h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 50px;
+  height: 3px;
+  background-color: var(--accent-color);
+  border-radius: 1px;
+}
+
+.footer-links ul {
+  padding: 0;
+}
+.footer-links li {
+  margin-bottom: 0.85rem;
+}
+.footer-links a {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+.footer-links a:hover {
+  color: var(--accent-color);
+  padding-left: 6px;
+}
+
+.footer-newsletter p {
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.newsletter-form input[type="email"] {
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-light);
+  border-radius: var(--border-radius-small);
+  flex-grow: 1;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.newsletter-form input[type="email"]::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+.newsletter-form input[type="email"]:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.newsletter-form button[type="submit"] {
+  padding: 0.85rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 500px) {
+    .newsletter-form {
+        flex-direction: row;
+    }
+    .newsletter-form button[type="submit"] {
+        flex-shrink: 0;
+    }
+}
+
+
+.footer-social .social-icons {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+.footer-social .social-icons a {
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+.footer-social .social-icons a:hover {
+  color: var(--accent-color);
+  transform: translateY(-3px) scale(1.05);
+}
+
+.footer-social p {
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* General Responsive Adjustments (excluding Hero specific ones) */
+@media (max-width: 768px) {
+  #contact form {
+    padding: 2rem 1.5rem; /* Reduced padding for contact form on tablets */
+  }
+
+  /* Styles for FAQ that were inside general responsive adjustments are removed */
+  /* .faq-question { ... } */
+  /* .faq-answer { ... } */
+  /* .faq-answer p { ... } */
+
+  .footer-content {
+    grid-template-columns: 1fr; /* Stack footer sections */
+    text-align: center; /* Center text in footer sections */
+  }
+  .footer-links h4::after,
+  .footer-social h4::after,
+  .footer-newsletter h4::after {
+    left: 50%;
+    transform: translateX(-50%); /* Center underlines */
+  }
+  .footer-social .social-icons {
+    justify-content: center; /* Center social icons */
+  }
+  .newsletter-form {
+    flex-direction: column; /* Ensure column layout for newsletter on medium screens */
+  }
+}

@@ -1,0 +1,120 @@
+/* src/components/TestimonialsSection.css */
+#testimonials {
+    background: var(--bg-white); /* Or var(--bg-light) if you prefer a slightly off-white */
+    padding: 5rem 2rem; /* Consistent section padding */
+  }
+  
+  #testimonials h2 {
+    color: var(--text-dark);
+    margin-bottom: 0.75rem; /* Tighter spacing if section-intro-text follows */
+  }
+  
+  #testimonials .section-intro-text {
+    color: var(--text-medium);
+    margin-bottom: 3.5rem; /* Standard bottom margin for intro text */
+  }
+  
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); /* Responsive columns, slightly larger min */
+    gap: 2.5rem; /* Consistent gap */
+    max-width: 1200px; /* Align with main container width */
+    margin: 0 auto; /* Centering the grid */
+  }
+  
+  .testimonial {
+    background: var(--bg-white);
+    padding: 2rem 2.5rem; /* Generous padding */
+    border-radius: var(--border-radius-large);
+    border-left: 6px solid var(--accent-color); /* Prominent accent border */
+    box-shadow: 0 8px 20px var(--shadow-color);
+    text-align: left;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* Simplified transition for hover effect */
+    transition: border-left-color 0.3s ease;
+  }
+  
+  .testimonial:hover {
+    /* Removed transform (translateY, scale) and complex box-shadow changes */
+    /* Kept a simple border color change for hover feedback */
+    border-left-color: var(--secondary-accent-color);
+    /* You could add other subtle hover effects here if desired, e.g.: */
+    /* background-color: var(--bg-light-hover); */
+  }
+  
+  .testimonial-avatar { /* If you uncomment avatar usage */
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    object-fit: cover;
+    border: 3px solid var(--border-color-light);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .testimonial .quote {
+    font-style: italic;
+    font-size: 1.05rem; /* Or clamp(1rem, 1.5vw, 1.1rem) for responsiveness */
+    color: var(--text-medium);
+    margin-bottom: 1.5rem;
+    line-height: 1.75; /* Improved readability */
+    position: relative;
+    padding-left: 3rem; /* Space for the larger quote mark */
+    flex-grow: 1; /* Allows quote to take up space if card heights vary */
+  }
+  
+  .testimonial .quote::before {
+    content: '“';
+    font-family: Georgia, serif; /* Classic quote font */
+    font-size: 4.5rem; /* Larger, more impactful quote mark */
+    color: var(--accent-color);
+    opacity: 0.4; /* Slightly more visible */
+    position: absolute;
+    left: -0.2rem;
+    top: -2rem;
+    line-height: 1;
+  }
+  
+  .testimonial .author {
+    font-weight: 700; /* Bolder author */
+    font-size: 1rem;
+    color: var(--primary-darker); /* Use a darker shade of primary or text-dark */
+    text-align: right;
+    margin-top: auto; /* Pushes author to the bottom if quotes have varying lengths */
+    padding-top: 1rem; /* Space above author */
+  }
+  
+  .testimonial .author::before {
+    content: "— "; /* Standard em-dash for attribution */
+    color: var(--text-medium); /* Softer color for the dash */
+  }
+  
+  /* Responsive adjustments for testimonials */
+  @media (max-width: 768px) {
+    .testimonials-grid {
+      gap: 2rem;
+    }
+    .testimonial {
+      padding: 1.75rem 2rem;
+    }
+    .testimonial .quote {
+      font-size: 1rem;
+      padding-left: 2.5rem;
+    }
+    .testimonial .quote::before {
+      font-size: 3.5rem;
+      left: -0.1rem;
+      top: -1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .testimonial {
+      padding: 1.5rem;
+    }
+     .testimonial .quote {
+      font-size: 0.95rem;
+    }
+  }

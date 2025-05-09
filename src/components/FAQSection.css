@@ -1,0 +1,126 @@
+/* src/components/FAQSection.css */
+#faq {
+    background: var(--bg-light);
+    padding: 5rem 2rem; /* Consistent section padding */
+  }
+  
+  #faq h2 {
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+  }
+  
+  #faq .section-intro-text {
+    color: var(--text-medium);
+    margin-bottom: 3rem; /* Slightly less margin than testimonials as list itself has presence */
+  }
+  
+  .faq-list {
+    max-width: 850px; /* Slightly wider for comfortable reading */
+    margin: 0 auto; /* Centering the list */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-large); /* Consistent border radius */
+    overflow: hidden; /* Crucial for child border-radius and animations like layout */
+    box-shadow: 0 6px 18px var(--shadow-color); /* Enhanced shadow */
+  }
+  
+  .faq-item {
+    background-color: var(--bg-white); /* Each item on white for clarity */
+    border-bottom: 1px solid var(--border-color-light); /* Lighter border between items */
+  }
+  
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+  
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem 2rem; /* Increased padding for a more spacious feel */
+    background-color: transparent; /* Handled by .faq-item */
+    border: none;
+    text-align: left;
+    font-size: 1.15rem; /* Slightly larger question text */
+    font-weight: 600; /* Bolder for more emphasis */
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease; /* Smooth transition */
+  }
+  
+  .faq-question:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.04); /* More subtle hover */
+    color: var(--primary-color);
+  }
+  
+  .faq-question.active {
+    background-color: rgba(var(--primary-color-rgb), 0.08);
+    color: var(--primary-color); /* Primary color for active question */
+  }
+  
+  .faq-question span { /* The text part of the question */
+    flex-grow: 1;
+    padding-right: 1.5rem; /* More space before the icon */
+    line-height: 1.4;
+  }
+  
+  .faq-question .chevron-icon svg { /* Targeting the lucide icon wrapper if needed, or direct svg */
+    color: var(--primary-color); /* Chevron color tied to primary */
+    /* Framer Motion handles rotate, CSS transition for transform here is not strictly needed for rotate */
+  }
+  
+  .faq-question.active .chevron-icon svg {
+    color: var(--primary-color); /* Ensure it stays primary */
+  }
+  
+  .faq-answer {
+    /* Horizontal padding for the content */
+    padding-left: 2rem;
+    padding-right: 2rem;
+    /* Bottom padding when open - Framer Motion layout will animate to include this space */
+    padding-bottom: 1.75rem;
+    background-color: var(--bg-white); /* Ensure consistency */
+    overflow: hidden; /* Essential for AnimatePresence height animation with layout */
+  }
+  
+  .faq-answer p {
+    font-size: 1rem; /* Consistent paragraph size */
+    line-height: 1.7;
+    color: var(--text-medium);
+    margin-bottom: 0; /* Let containing elements and padding handle spacing */
+  }
+  
+  .faq-answer p + p {
+    margin-top: 1rem; /* Space between paragraphs within an answer, if any */
+  }
+  
+  /* Responsive adjustments for FAQ */
+  @media (max-width: 768px) {
+    .faq-list {
+      max-width: 95%;
+    }
+    .faq-question {
+      padding: 1.25rem 1.5rem;
+      font-size: 1.05rem;
+    }
+    .faq-question span {
+      padding-right: 1rem;
+    }
+    .faq-answer {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+    .faq-answer p {
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .faq-question {
+      font-size: 1rem;
+    }
+    .faq-answer p {
+      font-size: 0.9rem;
+    }
+  }

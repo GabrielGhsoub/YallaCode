@@ -1,0 +1,341 @@
+/* HeroSection.css - Styles specific to the Hero Section */
+#hero {
+    background: linear-gradient(135deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
+    color: var(--hero-text-primary);
+    min-height: 100vh; /* Hero section itself should fill the viewport */
+    display: flex;
+    flex-direction: column;
+    position: relative; /* For ::before, ::after pseudo-elements and mobile menu positioning */
+    overflow: hidden; /* Prevent scroll from decorative elements if they exceed bounds */
+}
+
+/* Decorative ::before and ::after elements */
+#hero::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.025);
+    border-radius: 45% 55% 60% 40% / 50% 40% 55% 45%;
+    opacity: 0.6;
+    filter: blur(15px);
+    animation: slowMorphOne 20s ease-in-out infinite alternate;
+    z-index: 1; /* Ensure they are behind nav and content */
+}
+#hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    right: -100px;
+    width: 350px;
+    height: 350px;
+    background: rgba(var(--hero-accent-rgb, 255, 215, 0), 0.05);
+    border-radius: 60% 40% 30% 70% / 70% 50% 60% 40%;
+    opacity: 0.7;
+    filter: blur(20px);
+    animation: slowMorphTwo 25s ease-in-out -5s infinite alternate;
+    z-index: 1; /* Ensure they are behind nav and content */
+}
+@keyframes slowMorphOne {
+    0% { transform: rotate(0deg) scale(1); border-radius: 45% 55% 60% 40% / 50% 40% 55% 45%; }
+    50% { transform: rotate(20deg) scale(1.1); border-radius: 50% 50% 45% 55% / 55% 45% 50% 50%;}
+    100% { transform: rotate(-10deg) scale(1); border-radius: 40% 60% 50% 50% / 45% 55% 40% 60%; }
+}
+@keyframes slowMorphTwo {
+    0% { transform: rotate(0deg) scale(1); border-radius: 60% 40% 30% 70% / 70% 50% 60% 40%; }
+    50% { transform: rotate(-25deg) scale(1.15); border-radius: 50% 50% 55% 45% / 60% 40% 50% 50%;}
+    100% { transform: rotate(15deg) scale(0.95); border-radius: 70% 30% 40% 60% / 50% 60% 45% 55%; }
+}
+
+/* Main Navigation Bar */
+#hero nav {
+    display: flex; /* Use flex for internal alignment via nav-content */
+    padding: 0 2rem; /* Horizontal padding for the nav bar */
+    width: 100%;
+    background-color: rgba(31, 43, 56, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: fixed; /* Fixed at the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* High z-index to stay on top */
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    height: var(--navbar-height); /* Consistent height from global CSS */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Content wrapper inside the nav bar for logo and links/toggle alignment */
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%; /* Ensure it fills the nav height */
+}
+
+#hero .logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--hero-accent);
+    z-index: 1001; /* Ensure logo is above pseudo-elements if overlap occurs */
+}
+
+/* Desktop Navigation Links (ul.desktop-nav-links) */
+#hero nav ul.desktop-nav-links {
+    display: flex; /* Default for desktop */
+    gap: 2.2rem;
+    align-items: center;
+    margin: 0; /* Reset default ul margin */
+    padding: 0; /* Reset default ul padding */
+}
+
+/* Common styles for all navigation links (<a> tags) */
+#hero nav a {
+    color: var(--hero-text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 0; /* Vertical padding for clickable area, no horizontal here */
+    position: relative;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block; /* For proper padding and transform */
+}
+
+/* Underline effect for desktop links */
+#hero nav ul.desktop-nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--hero-accent);
+    transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+#hero nav ul.desktop-nav-links a:hover::after,
+#hero nav ul.desktop-nav-links a.active::after {
+    width: 100%;
+}
+
+/* Hover and active states for general nav links */
+#hero nav a:hover,
+#hero nav a.active {
+    color: var(--hero-accent);
+    /* transform: translateY(-1px); /* Subtle lift, can be kept or removed for mobile */
+}
+#hero nav ul.desktop-nav-links a:hover,
+#hero nav ul.desktop-nav-links a.active {
+    transform: translateY(-1px);
+}
+
+
+/* "Apply Now" link styled as a button in the navbar */
+#hero nav .apply-nav-link {
+    padding: 0.5rem 1.3rem;
+    background: var(--accent-color);
+    border-radius: var(--border-radius-small);
+    color: var(--text-on-accent) !important; /* Ensure text color overrides general 'a' color */
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+#hero nav .apply-nav-link:hover {
+    background: var(--accent-hover);
+    transform: scale(1.05) translateY(-1px); /* Keep existing hover for desktop */
+    box-shadow: 0 4px 8px rgba(var(--accent-color-rgb, 255,153,0),0.3);
+    color: var(--text-on-accent) !important; /* Ensure text color on hover */
+}
+#hero nav .apply-nav-link::after { /* Remove underline from this button-like link */
+    display: none;
+}
+
+
+/* Mobile Menu Toggle Button (Hamburger Icon) */
+.mobile-menu-toggle {
+    display: none; /* Hidden on desktop */
+    background: transparent;
+    border: none;
+    color: var(--hero-text-primary); /* Or var(--hero-accent) */
+    font-size: 1.5rem; /* Adjust for icon visual size */
+    cursor: pointer;
+    padding: 0.5rem; /* Clickable area */
+    z-index: 1010; /* Above mobile menu overlay */
+    line-height: 1; /* Prevent extra space around icon */
+}
+.mobile-menu-toggle svg { /* Size the SVG icon within the button */
+    width: 28px;
+    height: 28px;
+    display: block; /* Ensures proper rendering */
+}
+
+/* Mobile Navigation Links Container (ul.mobile-nav-links) */
+#hero nav ul.mobile-nav-links {
+    /* display: none; set by Framer Motion initial state */
+    flex-direction: column;
+    position: absolute;
+    top: var(--navbar-height); /* Position below the main nav bar */
+    left: 0;
+    right: 0;
+    background-color: rgba(31, 43, 56, 0.98); /* Slightly more opaque for readability */
+    padding: 1rem 0; /* Vertical padding for the menu block */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1005; /* Below toggle button, above hero content */
+    align-items: center;
+    gap: 0.25rem; /* Reduced gap for tighter mobile menu */
+    border-top: 1px solid rgba(255, 255, 255, 0.08); /* Subtle separator */
+    margin: 0; /* Reset */
+}
+#hero nav ul.mobile-nav-links li {
+    width: 100%;
+    text-align: center;
+}
+/* Specific styles for links within the mobile menu */
+#hero nav ul.mobile-nav-links a {
+    display: block; /* Make link take full width of li */
+    padding: 0.8rem 1rem; /* Larger touch targets */
+    font-size: 1rem;
+    color: var(--hero-text-secondary);
+    width: 100%; /* Ensure it spans full width */
+}
+#hero nav ul.mobile-nav-links a.active,
+#hero nav ul.mobile-nav-links a:hover {
+    color: var(--hero-accent);
+    background-color: rgba(var(--hero-accent-rgb), 0.1); /* Subtle hover/active background */
+    transform: translateY(0); /* No vertical shift needed for mobile list items */
+}
+/* Underline for active link in mobile menu */
+#hero nav ul.mobile-nav-links a.active::after {
+    content: '';
+    position: absolute;
+    width: 40%; /* Or a fixed width like 50px */
+    height: 2px;
+    bottom: 0.3rem; /* Adjust position */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--hero-accent);
+    transition: width 0.3s ease; /* Keep transition if needed */
+}
+#hero nav ul.mobile-nav-links a:hover::after { /* No underline on hover for non-active mobile items */
+    width: 0;
+}
+
+/* "Apply Now" button within the mobile menu */
+#hero nav ul.mobile-nav-links .apply-nav-link {
+    display: inline-block; /* Make it look like a button */
+    width: auto; /* Fit content */
+    padding: 0.8rem 1.8rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+#hero nav ul.mobile-nav-links .apply-nav-link:hover {
+    transform: scale(1.03); /* Slight scale for mobile hover */
+}
+
+
+/* Hero Content Area */
+.hero-content {
+    flex-grow: 1; /* Takes remaining vertical space in #hero */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 850px;
+    margin: 0 auto; /* Center horizontally */
+    text-align: center;
+    /*
+      The body already has padding-top: var(--navbar-height).
+      This padding-top is for space *between* the fixed navbar and the hero text content.
+    */
+    padding: calc(var(--navbar-height) + 3rem) 2rem 3rem;
+    position: relative; /* For z-index stacking if needed */
+    z-index: 5; /* Above decorative ::before/::after */
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.15;
+    color: var(--hero-text-primary);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.hero-content p {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    margin-bottom: 2.5rem;
+    max-width: 650px;
+    color: var(--hero-text-secondary);
+    font-weight: 300;
+    line-height: 1.7;
+}
+#hero .cta-button { /* Main Call to Action button in hero content */
+    padding: 0.9rem 2.2rem;
+    font-size: 1.05rem;
+}
+
+
+/* --- Responsive adjustments for Hero Section --- */
+@media (max-width: 768px) {
+    #hero nav {
+        padding: 0 1rem; /* Reduced horizontal padding for the nav bar */
+        /* height: var(--navbar-height); /* Remains consistent */
+    }
+
+    #hero .logo {
+        font-size: 1.6rem; /* Slightly smaller logo on mobile */
+    }
+
+    .mobile-menu-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    #hero nav ul.desktop-nav-links {
+        display: none; /* Hide desktop links */
+    }
+
+    /* ul.mobile-nav-links is handled by JS toggle and its own styles */
+
+    .hero-content {
+        /* Adjust top padding to account for the fixed navbar height + desired space */
+        padding-top: calc(var(--navbar-height) + 2rem);
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2rem, 7vw, 2.8rem); /* Adjusted clamp for mobile */
+    }
+    .hero-content p {
+        font-size: clamp(0.95rem, 4vw, 1.1rem); /* Adjusted clamp for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    #hero nav {
+        padding: 0 0.75rem; /* Further reduce nav bar padding */
+    }
+    #hero .logo {
+        font-size: 1.5rem; /* Even smaller logo */
+    }
+    .mobile-menu-toggle svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .hero-content {
+        padding-top: calc(var(--navbar-height) + 1.5rem); /* Adjust space for very small screens */
+    }
+
+    #hero nav ul.mobile-nav-links a { /* Links within mobile menu on small screens */
+        font-size: 0.95rem;
+        padding: 0.7rem 1rem;
+    }
+    #hero nav ul.mobile-nav-links .apply-nav-link { /* Apply button in mobile menu */
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+

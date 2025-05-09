@@ -1,0 +1,150 @@
+/* TracksSection.css */
+/* Styles for the #tracks section container (padding, etc., can be inherited or overridden from global) */
+
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 2.5rem; 
+  margin-top: 3.5rem; 
+}
+
+.program-card {
+  background-color: var(--bg-white); 
+  border-radius: var(--border-radius-large); 
+  padding: 2rem; 
+  border: 1px solid var(--border-color-light); 
+  box-shadow: 0 6px 18px var(--shadow-color); 
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s ease;
+}
+
+.program-card h3 { 
+  font-size: clamp(1.4rem, 2.2vw, 1.6rem); 
+  color: var(--primary-darker);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.program-card .program-subtitle {
+  font-size: 0.95rem; 
+  color: var(--text-medium);
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+}
+
+.program-card .program-subtitle strong {
+  font-weight: 700; 
+  color: var(--text-dark);
+}
+
+.program-card .program-description {
+  font-size: 0.9rem; 
+  line-height: 1.7;
+  color: var(--text-medium);
+  margin-bottom: 1.75rem; 
+  flex-grow: 1; 
+}
+
+.program-card h4 { 
+  font-size: 1.05rem; 
+  color: var(--text-dark);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.program-card .focus-list {
+  list-style: none; 
+  padding-left: 0;
+  margin-bottom: 2rem; 
+}
+
+.program-card .focus-list li {
+  font-size: 0.88rem; 
+  color: var(--text-medium);
+  margin-bottom: 0.65rem; 
+  padding-left: 1.7em;    
+  position: relative;
+  line-height: 1.55;
+}
+
+.program-card .focus-list li::before {
+  content: '✓'; 
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%); 
+  color: var(--accent-color); 
+  font-weight: bold; 
+  font-size: 0.9em; 
+}
+
+/* --- UPDATED BUTTON STYLING --- */
+.program-card .learn-more-button.cta-button-variant {
+  margin-top: auto; 
+  width: 100%; 
+  
+  /* New outline style */
+  background-color: transparent; /* Or use a very light tint: rgba(var(--accent-color-rgb), 0.05); */
+  color: var(--accent-color); /* Text and icon color */
+  border: 2px solid var(--accent-color); /* Accent color border */
+  box-shadow: none; /* Remove default shadow for outline buttons or use a very subtle one */
+
+  padding: 0.75rem 1.25rem; /* Adjusted padding */
+  font-size: 0.95rem; 
+  font-weight: 600; /* Make text a bit bolder */
+  
+  display: flex; /* To align text and icon */
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem; /* Space between "See Details" and icon */
+
+  /* Base .btn styles like border-radius are inherited from index.css */
+  /* Framer Motion handles hover for backgroundColor, color, borderColor, transform.
+     CSS transition is a good fallback. */
+  transition: background-color 0.25s ease-out, color 0.25s ease-out, border-color 0.25s ease-out, transform 0.2s ease-out;
+}
+
+/* CSS hover as fallback/complement to Framer Motion */
+.program-card .learn-more-button.cta-button-variant:hover {
+  background-color: var(--accent-color); /* Fill with accent on hover */
+  color: var(--text-on-accent);       /* Change text/icon color for contrast */
+  border-color: var(--accent-color);    /* Ensure border matches on hover */
+  /* transform: translateY(-2px); /* Framer Motion handles this */
+  /* box-shadow: 0 4px 12px rgba(var(--accent-color-rgb), 0.2); /* Optional: add shadow on hover */
+}
+/* --- END UPDATED BUTTON STYLING --- */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tracks-grid {
+    gap: 2rem; 
+  }
+  .program-card {
+    padding: 1.75rem; 
+  }
+}
+
+@media (max-width: 480px) {
+  .tracks-grid {
+    grid-template-columns: 1fr; 
+    gap: 1.5rem; 
+  }
+  .program-card {
+    padding: 1.5rem; 
+  }
+  .program-card h3 {
+    font-size: 1.35rem; 
+  }
+  .program-card .program-description {
+    font-size: 0.85rem;
+  }
+  .program-card .focus-list li {
+    font-size: 0.82rem;
+  }
+  .program-card .learn-more-button.cta-button-variant {
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem; /* Slightly adjust padding for smaller button */
+    gap: 0.4rem; /* Reduce gap for smaller button */
+  }
+}
